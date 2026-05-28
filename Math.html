@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Математика без стресса | Айрат</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2b4c7c 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .avatar-placeholder {
+            width: 150px;
+            height: 150px;
+            background: #3a6b9e;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: bold;
+            color: white;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+        }
+
+        /* Блоки */
+        .section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e3c72;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .price-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin: 20px 0;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #6c757d;
+        }
+
+        .btn-telegram {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #0088cc;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.1s;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-telegram:hover {
+            background: #006699;
+            transform: scale(1.02);
+        }
+
+        .btn-call {
+            background: #34a853;
+        }
+        .btn-call:hover {
+            background: #2a8c46;
+        }
+
+        .reviews {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 220px;
+            font-style: italic;
+            border-left: 4px solid #0088cc;
+        }
+
+        .review-author {
+            margin-top: 12px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            background: #f3f4f6;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .contact-link:hover {
+            background: #e5e7eb;
+        }
+
+        /* Калькулятор */
+        .calculator {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .calculator select, .calculator input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+        }
+        .calc-result {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2d6a4f;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: #4b5563;
+        }
+
+        .work-hours {
+            text-align: center;
+            background: #eef2ff;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <div class="header">
+        <div class="container">
+            <img src="avatar.jpg" alt="Айрат Ринатович" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin:0 auto 20px; display:block; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+            <h1>Айрат Ринатович</h1>
+            <p>Репетитор по математике для 1–7 классов</p>
+            <div class="tagline">📐 Онлайн и очно в Казани</div>
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                <a href="https://t.me/airatka_math" target="_blank" class="btn-telegram">📩 Написать в Telegram</a>
+                <a href="tel:+79656087251" class="btn-telegram btn-call">📞 Позвонить</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 1. О ПРЕПОДАВАТЕЛЕ -->
+        <div class="section">
+            <h2 class="section-title">О преподавателе</h2>
+            <div class="about-text">
+                <p>✨ <strong>Математика без стресса</strong> — это понятные уроки без зубрёжки и страха.</p>
+                <p>Меня зовут Айрат Ринатович, опыт преподавания — более 3 лет. Помогаю ученикам 1–7 классов разобраться со сложными темами простым языком. Онлайн (Zoom) или очно у себя дома в Казани.</p>
+                <p>🎯 Каждый ученик получает индивидуальный подход, и мы вместе превращаем «не понимаю» в «точно знаю».</p>
+            </div>
+            <div class="features">
+                <div class="feature-card"><div class="feature-icon">🧠</div><h3>Без стресса</h3><p>Спокойная атмосфера, никакого давления.</p></div>
+                <div class="feature-card"><div class="feature-icon">📚</div><h3>1–7 классы</h3><p>Помощь с домашкой, подготовка к контрольным.</p></div>
+                <div class="feature-card"><div class="feature-icon">💬</div><h3>Простым языком</h3><p>Сложное объясняю понятно и с юмором.</p></div>
+            </div>
+        </div>
+
+        <!-- 2. ПРОБНОЕ ЗАНЯТИЕ-ДИАГНОСТИКА -->
+        <div class="section">
+            <h2 class="section-title">Пробное занятие-диагностика</h2>
+            <div class="calculator" style="max-width: 600px;">
+                <p style="font-size: 1.1rem;">🔍 Диагностика знаний, выявление пробелов, краткая обратная связь родителю.</p>
+                <p><strong>Длительность:</strong> 45–60 минут</p>
+                <p style="font-size: 1.4rem; font-weight: bold;">Стоимость: 800 ₽</p>
+                <a href="https://t.me/airatka_math" target="_blank" class="btn-telegram" style="margin-top: 10px;">📩 Записаться на диагностику</a>
+            </div>
+        </div>
+
+        <!-- 3. СТОИМОСТЬ ЗАНЯТИЙ -->
+        <div class="section">
+            <h2 class="section-title">Стоимость занятий</h2>
+            <div class="pricing-grid">
+                <div class="price-card"><h3>👤 Индивидуально</h3><div class="price">1 200 ₽ <small>/ час</small></div><p>Полное внимание вашему ребёнку. Разбираем всё, что непонятно.</p></div>
+                <div class="price-card"><h3>👥 Групповое</h3><div class="price">900 ₽ <small>/ час</small></div><p>Мини-группы 2–4 человека. Внимание каждому, общение и поддержка.</p></div>
+            </div>
+            <div style="text-align: center; margin-top: 35px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                <a href="https://t.me/airatka_math" target="_blank" class="btn-telegram">📩 Узнать расписание</a>
+                <a href="tel:+79656087251" class="btn-telegram btn-call">📞 Позвонить</a>
+            </div>
+        </div>
+
+        <!-- 4. КАЛЬКУЛЯТОР СТОИМОСТИ НА МЕСЯЦ -->
+        <div class="section">
+            <h2 class="section-title">Рассчитайте стоимость на месяц</h2>
+            <div class="calculator">
+                <label>Тип занятия:</label>
+                <select id="lessonType">
+                    <option value="1200">Индивидуальное (1200 ₽/час)</option>
+                    <option value="900">Групповое (900 ₽/час)</option>
+                </select>
+                <label>Количество занятий в неделю:</label>
+                <input type="number" id="sessionsPerWeek" value="1" min="1" max="7" step="1">
+                <div class="calc-result" id="monthlyPrice">≈ 0 ₽</div>
+                <p style="font-size: 0.8rem; margin-top: 10px;">*Расчёт примерный: цена × занятий в неделю × 4.3 недели</p>
+            </div>
+        </div>
+
+        <!-- 5. ПОЧЕМУ ВЫБИРАЮТ МЕНЯ (цифры) -->
+        <div class="section">
+            <h2 class="section-title">Почему родители выбирают меня</h2>
+            <div class="features">
+                <div class="feature-card"><div class="feature-icon">🧑‍🎓</div><h3>40+ учеников</h3><p>За 4 года работы</p></div>
+                <div class="feature-card"><div class="feature-icon">⭐</div><h3>90% остаются</h3><p>После пробного урока</p></div>
+                <div class="feature-card"><div class="feature-icon">📈</div><h3>+1 балл</h3><p>Среднее повышение оценок за месяц</p></div>
+            </div>
+        </div>
+
+        <!-- 6. ОТЗЫВЫ -->
+        <div class="section">
+            <h2 class="section-title">Отзывы</h2>
+            <div class="reviews">
+                <div class="review-card">«Искали репетитора по математике для сына 4 класса для подготовки к олимпиаде. Всё понравилось, чуткий, отзывчивый. Главное, что и сыну понравился репетитор»<div class="review-author">— Мама ученика 4 класса</div></div>
+                <div class="review-card">«Групповые занятия — супер! Дочь ждёт уроков. Стала увереннее на уроках в школе.»<div class="review-author">— Папа, 4 класс</div></div>
+                <div class="review-card">«Очень пунктуальный, доброжелательный. Ребёнок с нуля начал понимать задачи за 3 занятия.»<div class="review-author">— Отзыв из ВК</div></div>
+            </div>
+        </div>
+
+        <!-- 7. ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ -->
+        <div class="section">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="faq-item"><div class="faq-question">❓ Как проходят онлайн-занятия?</div><div class="faq-answer">Мы занимаемся в Zoom. Я показываю экран с интерактивной доской, ребёнок решает прямо у себя на планшете или компьютере. Все материалы остаются у него.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Расскажите подробнее про групповые занятия</div><div class="faq-answer">Групповые занятия проходят в мини-группах по 2–4 человека. Всем уделяю внимание, успеваю проверить каждого. Ребята общаются, учатся друг у друга, снижается страх ошибки. Стоимость — 900 ₽/час.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Даёте ли вы домашнее задание?</div><div class="faq-answer">Да, но небольшими порциями — 10–15 минут. Достаточно, чтобы закрепить тему, но без перегрузки. Проверяю и разбираю ошибки на следующем уроке.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Как отменить или перенести занятие?</div><div class="faq-answer">Предупредите за 12 часов — перенесём без вопросов. Если предупредили позже или не пришли — урок считается проведённым, но мы всегда можем договориться.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Подойдут ли занятия, если ребёнок совсем ничего не понимает?</div><div class="faq-answer">Да, это мой профиль. Начинаем с самой основы, убираем страх, объясняю буквально на пальцах. За 3–4 урока обычно появляется первая уверенность.</div></div>
+        </div>
+
+        <!-- 8. ЧАСЫ РАБОТЫ -->
+        <div class="section">
+            <h2 class="section-title">Удобное время для занятий</h2>
+            <div class="work-hours">
+                🕒 <strong>Пн–Пт:</strong> 18:00 – 21:00<br>
+                🕒 <strong>Сб:</strong> 10:00 – 13:00<br>
+                <span style="font-size: 0.9rem;">(другие слоты — по договорённости в Telegram)</span>
+            </div>
+        </div>
+
+        <!-- 9. КОНТАКТЫ -->
+        <div class="section">
+            <h2 class="section-title">Свяжитесь со мной</h2>
+            <div class="contact-links">
+                <a href="https://t.me/airatka_math" target="_blank" class="contact-link">📱 Telegram</a>
+                <a href="https://vk.ru/airat_math" target="_blank" class="contact-link">📘 ВКонтакте</a>
+                <a href="tel:+79656087251" class="contact-link">📞 Позвонить</a>
+                <button class="contact-link" onclick="copyPhone()">📋 Скопировать номер телефона</button>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <p>📍 Очные занятия — Казань, адрес при записи</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Айрат Ринатович — Математика без стресса | Репетитор по математике онлайн и в Казани</p>
+        </div>
+    </footer>
+
+    <script>
+        // Калькулятор
+        const typeSelect = document.getElementById('lessonType');
+        const sessionsInput = document.getElementById('sessionsPerWeek');
+        const monthlySpan = document.getElementById('monthlyPrice');
+
+        function updatePrice() {
+            let pricePerHour = parseFloat(typeSelect.value);
+            let sessions = parseFloat(sessionsInput.value);
+            if (isNaN(sessions)) sessions = 1;
+            let weeksPerMonth = 4.3;
+            let total = Math.round(pricePerHour * sessions * weeksPerMonth);
+            monthlySpan.innerText = `≈ ${total} ₽ в месяц`;
+        }
+
+        typeSelect.addEventListener('change', updatePrice);
+        sessionsInput.addEventListener('input', updatePrice);
+        updatePrice();
+
+        // Копирование номера
+        function copyPhone() {
+            const phone = '+79656087251'; // 
+            navigator.clipboard.writeText(phone).then(() => {
+                alert('Номер телефона скопирован: ' + phone);
+            }).catch(() => {
+                alert('Не удалось скопировать. Нажмите и скопируйте вручную: ' + phone);
+            });
+        }
+    </script>
+</body>
+</html>
